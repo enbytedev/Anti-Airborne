@@ -1,0 +1,18 @@
+<html>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+  <body>
+    <div id="wiki">
+      <div class="jumbotron">
+        <b>Knowledgebase articles are listed below...</b>
+        <hr>
+      <% for (post of posts) { %>
+        <a href="/<%= post.slice(0, -3) %>">
+          <div class="post">
+            <%= post.toUpperCase() %>  
+          </div>
+        </a>
+      <% } %>
+    </div>
+    </div>
+  </body>
+</html>
