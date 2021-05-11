@@ -1,5 +1,14 @@
 <html>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+  <head>
+    <title><%= title %></title>
+    <meta property="og:title" content="<%= title %>">
+    <meta property="og:site_name" content="">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="<%= description %>">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="">
+  </head>
   <body>
     <div id="wiki">
       <main>
@@ -10,6 +19,8 @@
         </div>
         <div class="jumbotron">
           <%- post %>
+          <hr>
+          <a href="/" class="text-center text-muted"><h2>Home</h2></a>
         </div>
       </main>
     </div>
