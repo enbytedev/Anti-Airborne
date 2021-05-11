@@ -8,7 +8,7 @@
       <% for (post of posts) { %>
         <a href="/<%= post.slice(0, -3) %>">
           <div class="post">
-            <%= post.replace('.md', ''); %>
+            <%= post.replace(/.md|-/g, ' '); %>
           </div>
         </a>
       <% } %>

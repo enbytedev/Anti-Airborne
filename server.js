@@ -1,4 +1,5 @@
 var fs = require('fs');
+const https = require('https');
 const express = require('express');
 const app = express();
 const matter = require('gray-matter');
@@ -37,5 +38,9 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.listen(8080);
-console.log('Server is listening on port 8080');
+const options = {
+	cert: fs.readFileSync('./sslcert/fullchain.pem'),
+	key: fs.readFileSync('./sslcert/privkey.pem')
+};
+app.listen(80);
+https.createServer(options, app).listen(443);
