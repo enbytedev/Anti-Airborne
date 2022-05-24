@@ -25,4 +25,6 @@
     </a>
     <p align="center">This system can also present embeds in popular applications such as Discord and iMessage.</p>
     <p align="center"><i>This is a mashup of various implementations that I have optimised for my own intended usage.</i></p>
+    <hr>
+    <a href="https://github.com/Aerial-Laptop/.github/blob/main/al-docs/NODEJS-SETUP.md">General Setup Documentation for NodeJS</a> from Aerial Laptop
 </p>

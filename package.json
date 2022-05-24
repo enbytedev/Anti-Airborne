@@ -1,4 +1,21 @@
 {
+  "name": "anti-airborne",
+  "version": "1.0.0",
+  "description": "A simple knowledge-base tool that operates on Markdown and ExpressJS to provide just enough functionality to be useful!",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aerial-Laptop/Anti-Airborne.git"
+  },
+  "author": "enbyte",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/Aerial-Laptop/Anti-Airborne/issues"
+  },
+  "homepage": "https://github.com/Aerial-Laptop/Anti-Airborne#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.1.6",
