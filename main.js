@@ -5,6 +5,7 @@ const app = express();
 const matter = require('gray-matter');
 const path = require('path');
 const {port} = require('./config.json');
+require("./aerialhelper");
 
 app.use(express.static('public'));
 
@@ -39,4 +40,4 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port);
-console.log(`A-Wiki listening on port ${port}!`)
+console.log(`Anti-Airborne listening on port ${port}!`.blue)
