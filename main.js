@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const matter = require('gray-matter');
 const path = require('path');
-const {port} = require('./config.json');
+require('dotenv').config()
 require("./aerialhelper");
 
 app.use(express.static('public'));
@@ -25,7 +25,7 @@ app.get("/:article", (req, res) => {
         let content = file.content;
         var result = md.render(content);
         
-        res.render("index", {
+        res.render("article", {
                 post: result,
                 title: file.data.title,
                 description: file.data.description,
@@ -34,10 +34,10 @@ app.get("/:article", (req, res) => {
 
 app.get("/", (req, res) => {
         const posts = fs.readdirSync(__dirname + '/articles/').filter(file => file.endsWith('.md'));
-        res.render("wiki", {
+        res.render("home", {
                 posts: posts
         });
 });
 
-app.listen(port);
-console.log(`Anti-Airborne listening on port ${port}!`.blue)
+app.listen(process.env.port);
+console.log(`Anti-Airborne listening on port ${process.env.port}!`.blue)
