@@ -25,7 +25,7 @@ const optionDefinitions = [
         var formatted = `port=${port}`
         fs.writeFileSync(`./.env`, formatted);
         console.log("> ".green.bold+"Successfully created the configuration file: ".cyan+"./.env".blue);
-        console.log("> ".green.bold+`Anti Airborne has successfully been configured with the following options:\n${formatted}\n\n`+"> ".green.bold+`Filing Saucer will now exit. Please start without the --configure option to proceed to the application.`.cyan)
+        console.log("> ".green.bold+`Anti Airborne has successfully been configured with the following options:\n${formatted}\n\n`+"> ".green.bold+`Anti Airborne will now exit. Please start without the --configure option to proceed to the application.`.cyan)
         process.exit()
       }
 
