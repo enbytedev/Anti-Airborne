@@ -1,5 +1,7 @@
+
 <html>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <head>
     <title><%= title %></title>
     <meta property="og:title" content="<%= title %>">
@@ -10,6 +12,9 @@
     <meta property="og:image" content="">
   </head>
   <body>
+	<div class="titlebar">
+		<a href="/"><i class="fa-solid fa-arrow-left-long"></i> Home</a>
+	</div>
     <div id="wiki">
       <main>
         <div class="jumbotron">
@@ -19,14 +24,37 @@
         </div>
         <div class="jumbotron">
           <%- post %>
-          <hr>
-          <a href="/" class="text-center text-muted"><h2>Home</h2></a>
         </div>
       </main>
     </div>
   </body>
   <footer>
     <p class="text-center text-muted">&copy; <b>(Group) 2022</b></p>
-
   </footer>
+	<style>
+	.button {
+		background-color: #008CBA; /* Green */
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	} 
+	.titlebar {
+		overflow: hidden;
+		background-color: #333;
+	}
+	.titlebar a {
+		float: left;
+		color: #f2f2f2;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 24px;
+	}
+		</style>
 </html>

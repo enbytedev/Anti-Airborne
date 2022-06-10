@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "A simple knowledge-base tool that operates on Markdown and ExpressJS to provide just enough functionality to be useful!",
   "main": "main.js",
+  "bin": "main.js",
   "scripts": {
-    "test": "node main.js"
+    "test": "node main.js",
+    "start": "node main.js",
+    "conf": "node main.js -c",
+    "build": "pkg package.json"
   },
   "repository": {
     "type": "git",
@@ -19,11 +23,26 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "colors": "^1.4.0",
+    "command-line-args": "^5.2.1",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
-    "markdown-it": "^12.0.6"
+    "markdown-it": "^12.0.6",
+    "pkg": "^5.7.0",
+    "prompt-sync": "^4.2.0"
+  },
+  "pkg": {
+    "scripts": "func/**/*.js",
+    "assets": [
+      "views/*.ejs",
+      "articles/*.md"
+    ],
+    "targets": [
+      "linux",
+      "macos"
+    ],
+    "outputPath": "dist"
   }
 }
