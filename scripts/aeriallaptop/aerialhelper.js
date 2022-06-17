@@ -1,8 +1,7 @@
-
 const fs = require('fs');
 const https = require('https');
-const {url, majVersion, minVersion} = require('./.aerialhelper.json');
-const fileName = './.aerialhelper.json';
+const {url, majVersion, minVersion, codebase} = require(`${__basedir}/scripts/aeriallaptop/.dist.json`);
+const fileName = `${__basedir}/scripts/aeriallaptop/.dist.json`;
 const file = require(fileName);
 
 let fallback = "https://raw.githubusercontent.com/Aerial-Laptop/.github/main/al-docs/fallback.json";
@@ -15,22 +14,8 @@ versionCheck();
 
 // File setup.
 function fileSetup() {
-    // Filing Saucer Setup
-    var dirArticles = `./articles/`;
-    var dirViews = `./views/`;
-    try {
-        if (!fs.existsSync(dirArticles)) {
-            fs.mkdirSync(dirArticles, { recursive: true });
-            console.log("> ".green.bold+"Successfully created the ARTICLES directory: ".cyan+"./articles/".blue);
-        }
-        if (!fs.existsSync(dirViews)) {
-            fs.mkdirSync(dirViews, { recursive: true });
-            console.log("> ".green.bold+"Successfully created the VIEWS directory: ".cyan+"./views/".blue);
-            require("./fileSetup");
-        }
-    } catch {
-        console.log("!!! Unable to create directories! Potential fixes:\n> Run from CLI\n> Run as root".red.bold)
-    }
+    let setupFilename = `setup${codebase}`;
+    require(`./${setupFilename}`);
 }
 
 
@@ -89,7 +74,7 @@ function useFallback() {
         });
         res.on("end", () => {
             let json = JSON.parse(body);
-            file.url = json.AntiAirborne;
+            file.url = json[codebase];
             fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
                 if (err) return console.log(err);
                 console.log('Corrected URL'.cyan);
