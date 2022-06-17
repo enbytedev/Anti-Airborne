@@ -1,3 +1,6 @@
+global.__basedir = __dirname;
+
+require('dotenv').config({path:"./.env"})
 var fs = require('fs');
 const https = require('https');
 const express = require('express');
@@ -6,37 +9,31 @@ const matter = require('gray-matter');
 const path = require('path');
 var colors = require('colors');
 var colors = require('colors/safe');
-require('dotenv').config({path:"./.env"})
 
+// CLI constants
 const optionDefinitions = [
-        { name: 'configure', alias: 'c', type: Boolean }
+        { name: 'configure', alias: 'c', type: Boolean },
+        { name: 'regen', alias: 'r', type: Boolean }
       ]
-      const commandLineArgs = require('command-line-args')
-      const options = commandLineArgs(optionDefinitions)
-      const cliArgs = JSON.stringify(options);
-      const cliArgsParsed = JSON.parse(cliArgs);
-      if (cliArgsParsed.configure) {
-        var fs = require('fs');
-        const prompt = require("prompt-sync")({ sigint: true });
-        
-        var port = prompt("==> (8080) Port: ");
-        if (port == "") {port = 8080;}
-
-        var formatted = `port=${port}`
-        fs.writeFileSync(`./.env`, formatted);
-        console.log("> ".green.bold+"Successfully created the configuration file: ".cyan+"./.env".blue);
-        console.log("> ".green.bold+`Anti Airborne has successfully been configured with the following options:\n${formatted}\n\n`+"> ".green.bold+`Anti Airborne will now exit. Please start without the --configure option to proceed to the application.`.cyan)
-        process.exit()
-      }
+const commandLineArgs = require('command-line-args')
+const options = commandLineArgs(optionDefinitions)
+const cliArgs = JSON.stringify(options);
+const cliArgsParsed = JSON.parse(cliArgs);
+      
+// CLI arg handling
+if (cliArgsParsed.configure) {
+require("./scripts/appUtil/configure");
+}
+if (cliArgsParsed.regen) {
+require('./scripts/appUtil/regenFiles');
+}
 
 if (process.env.port == undefined) {
         console.log("X ".brightRed.bold+".env does not exist! Please run with the ".red+"--configure".brightRed.bgGray+" flag to generate it!".red);
         process.exit()
 }
 
-if (process.pkg) {
-        require("./aerialhelper");  
-}
+if (process.env.aerialhelper === "true" || process.env.aerialhelper === true) {require("./scripts/aeriallaptop/aerialhelper");}
 
 app.use(express.static('public'));
 
@@ -52,7 +49,7 @@ app.get("/:article", (req, res) => {
         if (req.params.article == "icon.png") {
                 res.sendFile("icon.png", { root: "./static/" }, (err) => {if (err) {console.log(err);}})
         } else if (req.params.article == "favicon.ico") {
-                        // res.sendFile("favicon.ico", { root: "./static/" }, (err) => {if (err) {console.log(err);}})
+                        res.sendFile("favicon.ico", { root: "./static/" }, (err) => {if (err) {console.log(err);}})
         } else {
                 const file = matter.read('./articles/' + req.params.article + '.md');
 
