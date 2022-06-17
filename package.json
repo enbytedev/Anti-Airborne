@@ -6,7 +6,7 @@
   "bin": "main.js",
   "scripts": {
     "test": "node main.js",
-    "archive": "tar --exclude='./articles/**' --exclude='./node_modules/**' --exclude='./.git/**' --exclude='./.env' --exclude='./anti-airborne.tar.gz' -cvzf anti-airborne.tar.gz ./"
+    "archive": "tar --exclude='./node_modules/**' --exclude='./.git/**' --exclude='./.env' --exclude='./anti-airborne.tar.gz' -cvzf anti-airborne.tar.gz ./"
   },
   "repository": {
     "type": "git",
