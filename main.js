@@ -9,6 +9,7 @@ const matter = require('gray-matter');
 const path = require('path');
 var colors = require('colors');
 var colors = require('colors/safe');
+const rateLimit = require('express-rate-limit');
 
 // CLI constants
 const optionDefinitions = [
@@ -43,7 +44,15 @@ app.use(bodyParser.json());
 app.set("views", path.join("./views"));
 app.set("view engine", "ejs");
 
-app.get("/:article", (req, res) => {
+const accessLimit = rateLimit({
+        windowMs: 5 * 60 * 1000,
+        max: process.env.accessLimit,
+        standardHeaders: true,
+        legacyHeaders: false,
+        message: 'Too many access requests created from this IP, please try again after 5 minutes!',
+})
+
+app.get("/:article", accessLimit, (req, res) => {
 
         // read the markdown file
         if (req.params.article == "icon.png") {
@@ -66,7 +75,7 @@ app.get("/:article", (req, res) => {
 }
 });
 
-app.get("/", (req, res) => {
+app.get("/", accessLimit, (req, res) => {
         const posts = fs.readdirSync('./articles/').filter(file => file.endsWith('.md'));
         res.render("home", {
                 posts: posts
