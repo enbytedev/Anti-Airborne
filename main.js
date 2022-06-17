@@ -49,18 +49,24 @@ app.set("view engine", "ejs");
 app.get("/:article", (req, res) => {
 
         // read the markdown file
-        const file = matter.read('./articles/' + req.params.article + '.md');
-        
-        // use markdown-it to convert content to HTML
-        var md = require("markdown-it")();
-        let content = file.content;
-        var result = md.render(content);
-        
-        res.render("article", {
-                post: result,
-                title: file.data.title,
-                description: file.data.description,
-        });
+        if (req.params.article == "icon.png") {
+                res.sendFile("icon.png", { root: "./static/" }, (err) => {if (err) {console.log(err);}})
+        } else if (req.params.article == "favicon.ico") {
+                        // res.sendFile("favicon.ico", { root: "./static/" }, (err) => {if (err) {console.log(err);}})
+        } else {
+                const file = matter.read('./articles/' + req.params.article + '.md');
+
+                // use markdown-it to convert content to HTML
+                var md = require("markdown-it")();
+                let content = file.content;
+                var result = md.render(content);
+
+                res.render("article", {
+                        post: result,
+                        title: file.data.title,
+                        description: file.data.description,
+                });
+}
 });
 
 app.get("/", (req, res) => {
@@ -69,6 +75,9 @@ app.get("/", (req, res) => {
                 posts: posts
         });
 });
+
+// Create static route for home page, assets, etc.
+app.use(express.static('static'));
 
 app.listen(process.env.port);
 console.log(`Anti-Airborne listening on port ${process.env.port}!`.blue)

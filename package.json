@@ -6,9 +6,7 @@
   "bin": "main.js",
   "scripts": {
     "test": "node main.js",
-    "start": "node main.js",
-    "conf": "node main.js -c",
-    "build": "pkg package.json"
+    "archive": "tar --exclude='./articles/**' --exclude='./node_modules/**' --exclude='./.git/**' --exclude='./.env' --exclude='./anti-airborne.tar.gz' -cvzf anti-airborne.tar.gz ./"
   },
   "repository": {
     "type": "git",

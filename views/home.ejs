@@ -12,12 +12,15 @@
   </head>
   <body>
     <div class="titlebar">
-      <a href="#">Anti-Airborne by Aerial Laptop</a>
+      <a href="#">A project by Aerial Laptop</a>
     </div>
     <div id="wiki">
       <div class="jumbotron">
-        <h1 align="center">Knowledgebase articles are listed below...</h1>
+        <p align="center"><a><img src="./icon.png" width="400" height="400" /></a></p>
+        <h1 align="center">Anti-Airborne</h1>
         <hr>
+        <h2 align="center">Knowledgebase articles are listed below...</h2>
+        <br>
       <% for (post of posts) { %>
         <a href="/<%= post.slice(0, -3) %>">
           <div class="post">
