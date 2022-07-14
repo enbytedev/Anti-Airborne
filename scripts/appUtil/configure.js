@@ -8,18 +8,12 @@ console.log("Entered Setup".cyan.bold);
 var port = prompt("==> (8080)".gray.bold+" Port: ".blue);
 var aerialhelper = prompt("==> (true)".gray.bold+" Enable AerialHelper: ".blue);
 var accessLimit = prompt("==> (40)".gray.bold+" Access Limit (PER 5 MINUTES): ".blue);
-var applicationName = prompt("==> (Anti-Airborne)".gray.bold+" Application Name: ".blue);
-var organizationName = prompt("==> (Aerial Laptop)".gray.bold+" Organization Name: ".blue);
 if (port == "") {port = 8080;}
 if (aerialhelper == "") {aerialhelper = true;}
 if (accessLimit == "") {accessLimit = 40;}
-if (applicationName == "") {applicationName = "Anti-Airborne";}
-if (organizationName == "") {organizationName = "Aerial Laptop";}
 
 var formatted = `port=${port}
 accessLimit=${accessLimit}
-applicationName=${applicationName}
-organizationName=${organizationName}
 aerialhelper=${aerialhelper}`
 var createStream = fs.createWriteStream(`./.env`);
 createStream.end();

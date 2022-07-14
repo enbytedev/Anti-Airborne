@@ -4,7 +4,7 @@ const {url, majVersion, minVersion, codebase} = require(`${__basedir}/scripts/ae
 const fileName = `${__basedir}/scripts/aeriallaptop/.dist.json`;
 const file = require(fileName);
 
-let fallback = "https://raw.githubusercontent.com/Aerial-Laptop/.github/main/al-docs/fallback.json";
+let fallback = "https://raw.githubusercontent.com/enbytedev/enbytedev/main/assets/fallback-urls.json";
 var colors = require('colors');
 var colors = require('colors/safe');
 
