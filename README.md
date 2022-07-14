@@ -1,5 +1,5 @@
 <p align="center">
-  <a><img src="https://raw.githubusercontent.com/Aerial-Laptop/Anti-Airborne/main/icon.png" width="250" height="250" /></a>
+  <a><img src="https://raw.githubusercontent.com/enbytedev/Anti-Airborne/main/PROJECT.png" width="250" height="250" /></a>
 
   <h2 align="center">Anti-Airborne</h2>
  <p align="center"><i>"Keep your user's laptops from becoming airborne projectiles!"</i></p>
