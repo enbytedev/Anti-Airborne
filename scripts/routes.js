@@ -38,8 +38,17 @@ app.get("/:article", accessLimit, (req, res) => {
 });
 
 app.get("/", accessLimit, (req, res) => {
-    const posts = fs.readdirSync('./articles/').filter(file => file.endsWith('.md'));
+    const post_file = fs.readdirSync('./articles/').filter(file => file.endsWith('.md'));
+    const post_title = post_file.map(file => matter.read('./articles/' + file).data.title);
+    const post_description = post_file.map(file => matter.read('./articles/' + file).data.description);
+
+    const bundles = new Array();
+
+
+    for ( var i = 0; i < post_title.length; i++ ) {
+            bundles.push( [ post_file[i], post_title[i], post_description[i]] );
+    }
     res.render("home", {
-            posts: posts
+        bundles: bundles,
     });
 });
